@@ -58,7 +58,6 @@ func (s secrets) Int63() int64 {
 }
 
 func (k *FbKeyMgmt) createAndSignJWTToken(path string, bodyJSON string) (string, error) {
-
 	token := &jwt.MapClaims{
 		"uri":      path,
 		"nonce":    k.rnd.Int63(),
@@ -556,11 +555,12 @@ func (s *SDK) CreateVaultAccount(name string, hiddenOnUI bool, customerRefID str
 
 }
 
-//CreateVaultAsset
+// CreateVaultAsset
 // creates a new wallet under the VaultAccount
 // args:
-//     vaultAccountId
-//     assetId
+//
+//	vaultAccountId
+//	assetId
 func (s *SDK) CreateVaultAsset(vaultAccountId string, assetId string, idempotencyKey string) (CreateVaultAssetResponse, error) {
 
 	cmd := fmt.Sprintf("/v1/vault/accounts/%s/%s", vaultAccountId, assetId)
@@ -711,7 +711,7 @@ func (s *SDK) CreateInternalWalletAsset(walletId string, assetId string, address
 
 }
 
-//GetEstimateTxFee
+// GetEstimateTxFee
 // Get the estimate fee for a tx.
 func (s *SDK) GetEstimateTxFee(assetId string, amount string, source TransferPeerPath, destination DestinationTransferPeerPath, operation string) (EstimatedTransactionFeeResponse, error) {
 
